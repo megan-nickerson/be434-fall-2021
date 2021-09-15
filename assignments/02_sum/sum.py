@@ -37,9 +37,11 @@ def main():
     if len(numbers) == 1:
         line = str(numbers[0])
     else:
-        string_ints = [str(int) for int in numbers]
-        line = ' + '.join(string_ints)
-    
+        string_n = [str(n) for n in numbers]
+        line = ' + '.join(string_n)
+        
+    # replaced int with n above to avoid using a reserved word
+
     print('{} = {}'.format(line,str(sum(numbers))))
 
 # --------------------------------------------------
