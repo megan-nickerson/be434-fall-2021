@@ -45,8 +45,8 @@ def main():
 
     for fh in args.file_name:
         for line_num, line in enumerate(fh, start=1):
-            if args.number is True:
-                print("     {}\t{}".format(line_num, line), end='')
+            if args.number:
+                print("{:>6}\t{}".format(line_num, line.rstrip()))
             else:
                 print(line, end='')
 
