@@ -6,7 +6,7 @@ Purpose: Translate DNA or RNA
 """
 
 import argparse
-from pprint import pprint
+# from pprint import pprint
 
 
 # --------------------------------------------------
@@ -43,6 +43,9 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
+    seq = args.sequence
+    out = args.output
+
     codon_table = {}
     for line in args.codons:
         key, value = line.rstrip().split()
@@ -52,13 +55,18 @@ def main():
     seq = args.sequence
     protein = []
     for codon in [seq[i:i + k] for i in range(0, len(seq), k)]:
-        print(codon)
+        # print(codon)
+        protein.append(codon_table.get(codon.upper(), '-'))
+
     # pprint(codon_table)
     # print('seq =', args.sequence)
     # print('codons =', args.codons)
     # print('output =', args.output)
 
-    from pprint import PrettyPrinter
+    out.write(''.join(protein))
+
+    print('Output written to "{}".'.format(out.name))
+
 
 # --------------------------------------------------
 if __name__ == '__main__':
