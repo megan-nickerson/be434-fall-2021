@@ -2,7 +2,7 @@
 """
 Author : megannickerson <megannickerson@localhost>
 Date   : 2021-10-12
-Purpose: Rock the Casbah
+Purpose: Find words in common
 """
 
 import argparse
