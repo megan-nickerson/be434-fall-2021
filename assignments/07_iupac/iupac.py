@@ -78,7 +78,7 @@ def main():
     #                 regex = regex + pattern
     #     print(seq, regex, file= args.outfile)
 
-    if args.outfile is not sys.stdout:
+    if args.outfile != sys.stdout:
         print('Done, see output in "{}"'.format(args.outfile.name))
 
 
