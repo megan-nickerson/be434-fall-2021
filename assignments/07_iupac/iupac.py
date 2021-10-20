@@ -7,9 +7,10 @@ Purpose: Translate IUPAC-encoded DNA
 
 import argparse
 import sys
-import re
 
 # --------------------------------------------------
+
+
 def get_args():
     """Get command-line arguments"""
 
@@ -17,7 +18,7 @@ def get_args():
         description='Expand IUPAC codes',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('SEQ',
+    parser.add_argument('seq',
                         metavar='SEQ',
                         nargs='+',
                         help='Input sequence(s)')
@@ -29,8 +30,6 @@ def get_args():
                         type=argparse.FileType('wt'),
                         default=sys.stdout)
 
-
-
     return parser.parse_args()
 
 
@@ -39,13 +38,51 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    SEQ = args.SEQ
-    iupac = {'A': 'A', 'C': 'C', 'G': 'G', 'T': 'T', 'U': 'U', 'R': 'AG', 'Y': 'CT', 'S': 'GC', 'W': 'AT', 'K': 'GT', 'M': 'AC', 'B': 'CGT', 'D': 'AGT', 'H': 'ACT', 'V': 'ACG', 'N': 'ACGT'}
+    input_sequence = args.seq
+    iupac = {'A': 'A', 'C': 'C', 'G': 'G', 'T': 'T', 'U': 'U',
+             'R': 'AG', 'Y': 'CT', 'S': 'GC', 'W': 'AT', 'K': 'GT',
+             'M': 'AC', 'B': 'CGT', 'D': 'AGT', 'H': 'ACT',
+             'V': 'ACG', 'N': 'ACGT'}
+    for seq in input_sequence:
+        output_seq = ""
+        output_re = ""
 
-    
-    for char in args.SEQ:
-        if char in iupac:
-            print(SEQ, re.match(iupac))
+        for item in seq:
+            if len(iupac.get(item)) > 1:
+                output_seq = output_seq + item
+                output_re = output_re + '[{}]'.format(iupac.get(item))
+            else:
+                output_seq = output_seq + item
+                output_re = output_re + iupac.get(item)
+        print('{} {}'.format(output_seq, output_re), file=args.outfile)
+
+    # iupac = [('A', 'A'),
+    #          ('C', 'C'),
+    #          ('G', 'G'),
+    #          ('T', 'T'),
+    #          ('U', 'U'),
+    #          ('R', '[AG]'),
+    #          ('Y', '[CT]'),
+    #          ('S', '[GC]'),
+    #          ('W', '[AT]'),
+    #          ('K', '[GT]'),
+    #          ('M', '[AC]'),
+    #          ('B', '[CGT]'),
+    #          ('D', '[AGT]'),
+    #          ('H', '[ACT]'),
+    #          ('V', '[ACG]'),
+    #          ('N', '[ACGT]')]
+
+    # for seq in args.SEQ:
+    #     regex = str()
+    #     for char in seq:
+    #         for value, pattern in iupac:
+    #             if re.search(value, char):
+    #                 regex = regex + pattern
+    #     print(seq, regex, file= args.outfile)
+
+    if args.outfile is not sys.stdout:
+        print('Done, see output in "{}"'.format(args.outfile.name))
 
 
 # --------------------------------------------------
