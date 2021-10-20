@@ -44,17 +44,14 @@ def main():
              'M': 'AC', 'B': 'CGT', 'D': 'AGT', 'H': 'ACT',
              'V': 'ACG', 'N': 'ACGT'}
     for seq in input_sequence:
-        output_seq = ""
         output_re = ""
 
         for item in seq:
             if len(iupac.get(item)) > 1:
-                output_seq = output_seq + item
                 output_re = output_re + '[{}]'.format(iupac.get(item))
             else:
-                output_seq = output_seq + item
                 output_re = output_re + iupac.get(item)
-        print('{} {}'.format(output_seq, output_re), file=args.outfile)
+        print('{} {}'.format(seq, output_re), file=args.outfile)
 
     # iupac = [('A', 'A'),
     #          ('C', 'C'),
