@@ -19,7 +19,7 @@ def get_args():
         description='Split interleaved/paired reads',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('file',
+    parser.add_argument('files',
                         nargs='+',
                         help='Input file(s)',
                         metavar='FILE',
@@ -81,7 +81,7 @@ def main():
     """Print final named and split files"""
 
     args = get_args()
-    files_split = [fasta.name for fasta in args.file]
+    files_split = [fasta.name for fasta in args.files]
     files_io_dict = fasta_io(files_split, args.outdir)
 
     for fasta in files_split:

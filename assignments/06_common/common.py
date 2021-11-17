@@ -43,20 +43,34 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    filename1 = args.FILE1
-    filename2 = args.FILE2
-    output = args.outfile
+    words1 = {}
+    for line in args.FILE1:
+        for word in line.split():
+            words1[word]=1
+    
+    words2 = {}
+    for line in args.FILE1:
+        for word in line.split():
+            words2[word]=1
+    
+    for word in words1:
+        if word in words2:
+            print(word, file=args.outfile)
+        
+    # filename1 = args.FILE1
+    # filename2 = args.FILE2
+    # output = args.outfile
 
-    FILE1 = filename1.read().split()
-    FILE2 = filename2.read().split()
+    # FILE1 = filename1.read().split()
+    # FILE2 = filename2.read().split()
 
-    common = sorted(list(set(FILE1).intersection(FILE2)))
+    # common = sorted(list(set(FILE1).intersection(FILE2)))
 
-    if output:
-        output.write('\n'.join(common))
-        output.close()
-    else:
-        print('\n'.join(common))
+    # if output:
+    #     output.write('\n'.join(common))
+    #     output.close()
+    # else:
+    #     print('\n'.join(common))
 
 
 # --------------------------------------------------

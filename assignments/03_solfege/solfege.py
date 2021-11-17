@@ -34,11 +34,11 @@ def main():
               'Sol': 'A needle pulling thread', 'La': 'A note to follow sol',
               'Ti': 'A drink with jam and bread'}
 
-    for char in args.text:
-        if char in singer:
-            print('{}, {}'.format(char, singer.get(char)))
+    for notes in args.text:
+        if notes in singer:
+            print('{}, {}'.format(notes, singer.get(notes)))
         else:
-            print("I don't know \"{}\"".format(char))
+            print("I don't know \"{}\"".format(notes))
 
 
 # --------------------------------------------------

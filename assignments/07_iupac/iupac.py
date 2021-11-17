@@ -76,7 +76,7 @@ def main():
     #         for value, pattern in iupac:
     #             if re.search(value, char):
     #                 regex = regex + pattern
-    #     print(seq, regex, file= args.outfile)
+    #     print(seq, regex, file=args.outfile)
 
     if args.outfile != sys.stdout:
         print('Done, see output in "{}"'.format(args.outfile.name))
