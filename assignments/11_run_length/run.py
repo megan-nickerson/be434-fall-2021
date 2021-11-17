@@ -38,43 +38,59 @@ def main():
 
     for dna_input in args.str.splitlines():
         rle(dna_input)
-
 # --------------------------------------------------
 
 
-def rle(dna_input):
+def rle(dna_input: str) -> str:  # take one string and return one string
     """Run-length input DNA"""
 
-    line_ls = []
+    counts = []  # a list to store all the characters seen
     dna_input = dna_input + "."
-    prev = "none"
+    prev = None
     count = 1
     for letter in dna_input:
-        if prev == "none":
+        if prev is None:
+            # beginning of sequence
             prev = letter
         elif letter == prev:
+            # this letter is same as before
             count += 1
         elif letter == ".":
-            line_ls.append([prev, count])
+            # this letter is different
+            counts.append([prev, count])
         else:
-            line_ls.append([prev, count])
+            # this is the end of the sequence to end the loop
+            counts.append([prev, count])
             prev = letter
             count = 1
+    prev = ''
+    count = 1
 
-    rle_printer(line_ls)
+    rle_printer(counts)
 
 # --------------------------------------------------
 
 
-def rle_printer(line_ls):
+def rle_printer(counts):
     """Compare pairs and print"""
 
-    pair_ls = []
-    for pair in line_ls:
+    pair_counts = []
+    for pair in counts:
         if pair[1] == 1:
             pair[1] = ''
-        pair_ls.append(''.join(map(str, pair)))
-    print(''.join(map(str, pair_ls)))
+        pair_counts.append(''.join(map(str, pair)))
+    print(''.join(map(str, pair_counts)))
+# --------------------------------------------------
+
+
+# def test_rle():
+#     """ Test rle """
+
+#     assert rle('A') == 'A'
+#     assert rle('ACGT') == 'ACGT'
+#     assert rle('AA') == 'A2'
+#     assert rle('AAAAA') == 'A5'
+#     assert rle('ACCGGGTTTT') == 'AC2G3T4'
 
 
 # --------------------------------------------------
