@@ -43,7 +43,7 @@ def main():
 
 
 def rle(dna_input):
-    """Run-length encoding of DNA"""
+    """Run-length input DNA"""
 
     line_ls = []
     dna_input = dna_input + "."
@@ -67,7 +67,7 @@ def rle(dna_input):
 
 
 def rle_printer(line_ls):
-    """take list of letter, count pairs from RLE and print"""
+    """Compare pairs and print"""
 
     pair_ls = []
     for pair in line_ls:
