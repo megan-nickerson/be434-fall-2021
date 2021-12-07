@@ -7,7 +7,7 @@ Purpose: Python clone of tac
 
 import argparse
 import sys
-from file_read_backwards import FileReadBackwards
+# from file_read_backwards import FileReadBackwards
 
 # from typing import Counter
 
@@ -43,44 +43,42 @@ def main():
 
     args = get_args()
     filename = args.file
-    
-    for fh in filename:
-        for line in fh:
-            print(FileReadBackwards(line.rstrip()))
-
-
-# for line in fh:
-#   line_rev = reversed(line.rstrip())
-#   print(line_rev)
-# This gives ['e', 'n', 'o'] / ['o', 'w', 't']
-
-        # for line in reversed(open(fh)):
-        #     print(line.rstrip())
-
-
-            # line_rev= reversed(line.rstrip())
-            # print(line_rev)
-
-    # lines = filename.readlines()
-    # for line in lines:
-    #     print(line)
-
-    # input_file = open(filename)
-    # line_count = 0
-    # for line in filename:
-    #     if line != '\n':
-    #         line_count += 1
-    # filename.close()
-
-    # print(line_count)
+    # line_of_list = []
 
     # for fh in filename:
-    #     for line_num, line in enumerate(fh, start=1):
-    #         print(line_num)
-            # if args.number:
-            #     print("{:>6}\t{}".format(line_num, line.rstrip()))
-            # else:
-            #     print(line, end='')
+    #     for line in fh:
+    #         line_of_list = list.reverse([line.rstrip()])
+    #         print(line_of_list)
+    #  prints None over and over
+
+    # for fh in filename:
+    #     for line in fh:
+    #         line_of_list = [line.rstrip()]
+    #         line_of_list.reverse()
+    #         print(line_of_list)
+    #  prints the lines in normal order ['one'] / ['two']
+
+    # for fh in filename:
+    #     for line in fh:
+    #         line_of_list = [line.rstrip()]
+    #         print(reversed(line_of_list))
+    #  prints <list_reverseiterator object at 0x100bf78b0>
+
+    # for fh in filename:
+    #     for line in fh:
+    #         line_of_list = [line.rstrip()]
+    #         print(list(reversed(line_of_list)))
+        #  prints the lines in normal order ['one'] / ['two']
+    
+    # for fh in filename:
+    #     for line in fh:
+    #         line_rev = reversed(line.rstrip())
+    #         print(list(line_rev))
+    # This gives ['e', 'n', 'o'] / ['o', 'w', 't']
+
+    # for fh in filename:
+    #     for line in fh:
+    #         print(FileReadBackwards(line.rstrip()))
 
 
 # --------------------------------------------------
