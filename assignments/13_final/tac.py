@@ -43,42 +43,13 @@ def main():
 
     args = get_args()
     filename = args.file
-    # line_of_list = []
 
-    # for fh in filename:
-    #     for line in fh:
-    #         line_of_list = list.reverse([line.rstrip()])
-    #         print(line_of_list)
-    #  prints None over and over
-
-    # for fh in filename:
-    #     for line in fh:
-    #         line_of_list = [line.rstrip()]
-    #         line_of_list.reverse()
-    #         print(line_of_list)
-    #  prints the lines in normal order ['one'] / ['two']
-
-    # for fh in filename:
-    #     for line in fh:
-    #         line_of_list = [line.rstrip()]
-    #         print(reversed(line_of_list))
-    #  prints <list_reverseiterator object at 0x100bf78b0>
-
-    # for fh in filename:
-    #     for line in fh:
-    #         line_of_list = [line.rstrip()]
-    #         print(list(reversed(line_of_list)))
-        #  prints the lines in normal order ['one'] / ['two']
-    
-    # for fh in filename:
-    #     for line in fh:
-    #         line_rev = reversed(line.rstrip())
-    #         print(list(line_rev))
-    # This gives ['e', 'n', 'o'] / ['o', 'w', 't']
-
-    # for fh in filename:
-    #     for line in fh:
-    #         print(FileReadBackwards(line.rstrip()))
+    for fh in filename:
+        list_of_lines = []
+        for line in fh:
+            list_of_lines.append(line.rstrip())
+        for next_line in reversed(list_of_lines):
+            print(next_line, file=args.outfile)
 
 
 # --------------------------------------------------
