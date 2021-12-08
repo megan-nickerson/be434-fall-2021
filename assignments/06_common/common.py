@@ -18,12 +18,12 @@ def get_args():
         description='Find words in common',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('FILE1',
+    parser.add_argument('file1',
                         metavar='FILE1',
                         type=argparse.FileType('rt'),
                         help='Input file 1')
 
-    parser.add_argument('FILE2',
+    parser.add_argument('file2',
                         help='Input file 2',
                         type=argparse.FileType('rt'),
                         metavar='FILE2')
@@ -43,34 +43,32 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    words1 = {}
-    for line in args.FILE1:
-        for word in line.split():
-            words1[word]=1
-    
-    words2 = {}
-    for line in args.FILE1:
-        for word in line.split():
-            words2[word]=1
-    
-    for word in words1:
-        if word in words2:
-            print(word, file=args.outfile)
-        
-    # filename1 = args.FILE1
-    # filename2 = args.FILE2
-    # output = args.outfile
+    output = args.outfile
 
-    # FILE1 = filename1.read().split()
-    # FILE2 = filename2.read().split()
+    # words1 = {}
+    # for line in args.file1:
+    #     for word in line.split():
+    #         words1[word] = 1
 
-    # common = sorted(list(set(FILE1).intersection(FILE2)))
+    # words2 = {}
+    # for line in args.file2:
+    #     for word in line.split():
+    #         words2[word] = 1
 
-    # if output:
-    #     output.write('\n'.join(common))
-    #     output.close()
-    # else:
-    #     print('\n'.join(common))
+    # for word in words1:
+    #     if word in words2:
+    #         print(word, file=args.outfile)
+
+    filename1 = args.file1.read().split()
+    filename2 = args.file2.read().split()
+
+    common = list(set(filename1).intersection(filename2))
+
+    if output:
+        output.write('\n'.join(common))
+        output.close()
+    else:
+        print('\n'.join(common))
 
 
 # --------------------------------------------------
