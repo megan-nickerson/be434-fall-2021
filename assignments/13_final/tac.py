@@ -7,9 +7,7 @@ Purpose: Python clone of tac
 
 import argparse
 import sys
-# from file_read_backwards import FileReadBackwards
 
-# from typing import Counter
 
 # --------------------------------------------------
 
